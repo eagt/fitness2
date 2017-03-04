@@ -11,10 +11,50 @@
   <body>
 
   	<%= render partial: "shared/navbar" %>
-  	
+
   	<div class="container">
-  		<!-- Content here -->
-    	<%= yield %>
+  	 
+      <div class="row">
+        <div class="col-4">
+          <div class="card card-outline-info">
+            <div class="card-block card-inverse card-info">
+              <%= icon('id-card-o', class: 'fa-5x') %> 
+            </div>
+
+            <div class="card-footer">
+              <a href="#" class="text-info"> <%= icon('info', "Details") %> </a>
+            </div> 
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card card-outline-warning">
+            <div class="card-block card-inverse card-warning">
+              <%= icon('balance-scale', class: 'fa-5x') %>
+            </div>
+
+            <div class="card-footer">
+              <a href="#" class="text-warning"> <%= icon('info', "Details") %> </a>
+            </div> 
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card card-outline-danger">
+            <div class="card-block card-inverse card-danger">
+              <%= icon('line-chart', class: 'fa-5x') %>
+            </div>
+
+            <div class="card-footer">
+              <a href="#" class="text-danger"> <%= icon('info', "Details") %> </a>
+            </div>  
+          </div>
+        </div>
+      </div>
+      <div class="row">&nbsp;</div>
+  		<div class="row">
+    	  <div class="col-12">
+          <%= yield %>
+        </div>
+      </div>
     </div>
   </body>
 </html>
