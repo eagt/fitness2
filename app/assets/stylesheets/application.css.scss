@@ -16,6 +16,11 @@ body > .container {
   padding: 60px 15px 0;
 }
 
+.inshtaex {
+	background-color:#e7e7ff; // Use to change the background color inside the table
+}
+
+
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";

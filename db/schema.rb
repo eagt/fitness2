@@ -10,13 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303123709) do
+ActiveRecord::Schema.define(version: 20170306164719) do
+
+  create_table "Equipment_Exercises", id: false, force: :cascade do |t|
+    t.integer "equipment_id", null: false
+    t.integer "exercise_id",  null: false
+  end
+
+  create_table "Etypes_Exercises", id: false, force: :cascade do |t|
+    t.integer "etype_id",    null: false
+    t.integer "exercise_id", null: false
+  end
+
+  create_table "Exercises_Muscles", id: false, force: :cascade do |t|
+    t.integer "exercise_id", null: false
+    t.integer "muscle_id",   null: false
+  end
+
+  create_table "equipment", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "etypes", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "exercises", force: :cascade do |t|
-    t.string   "etype"
+    t.string   "etype_id"
     t.string   "name"
-    t.string   "muscle"
-    t.string   "equipment"
+    t.string   "muscle_id"
+    t.string   "equipment_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "muscles", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
