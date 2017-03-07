@@ -28,10 +28,10 @@
       <tbody class="inshtaex">
         <% @exercises.each do |exercise| %>
           <tr>
-            <td><%= exercise.etype %></td>
+            <td><%= exercise.etype_id%></td>
             <td><%= exercise.name %></td>
-            <td><%= exercise.muscle %></td>
-            <td><%= exercise.equipment %></td>
+            <td><%= exercise.muscle_id %></td>
+            <td><%= exercise.equipment_id %></td>
             <td><%= link_to 'Show', exercise, :class => "btn btn-outline-success" %></td>
             <td><%= link_to 'Edit', edit_exercise_path(exercise), :class => "btn btn-outline-warning" %></td>
             <td><%= link_to 'Destroy', exercise, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-outline-danger" %></td>

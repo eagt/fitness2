@@ -1,3 +1,6 @@
 class Etype < ApplicationRecord
-	has_and_belongs_to_many :exercises
+
+	has_many :etypes_exercises
+	has_many :etypes, through: :etypes_exercises
+
 end

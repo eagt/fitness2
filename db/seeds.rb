@@ -7,14 +7,9 @@
 #   Character.createname: "Luke", movie: movies.first,
 
 Exercise.destroy_all
-
-Exercise.create!([{
-id: 1, etype_id: 1, name: "Jopo Arriba", muscle_id: 1, equipment_id: 1},
-{id: 1, etype_id: 2, name: "Sentadi", muscle_id: 2, equipment_id: 2},
-{id: 1, etype_id: 3, name: "Back Arm triceps", muscle_id: 3, equipment_id: 3}])
-
-
-p "Created #{Exercise.count} exercises"
+Etype.destroy_all
+Muscle.destroy_all
+Equipment.destroy_all
 
 
 Etype.create!([{
@@ -31,3 +26,12 @@ Equipment.create!([{
 	id: 1, name: "Body Only"},
 	{id: 2, name: "Cable"},
 	{id: 3, name: "Flat Bench"}])
+
+
+Exercise.create!([{
+id: 1, etype_id: 1, name: "Jopo Arriba", muscle_id: 1, equipment_id: 1},
+{id: 2, etype_id: 2, name: "Sentadi", muscle_id: 2, equipment_id: 2},
+{id: 3, etype_id: 3, name: "Back Arm triceps", muscle_id: 3, equipment_id: 3}])
+
+
+p "Created #{Exercise.count} exercises"
