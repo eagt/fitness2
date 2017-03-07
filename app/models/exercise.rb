@@ -1,7 +1,7 @@
 class Exercise < ApplicationRecord
 	
 	has_many :etypes_exercises
-	has_many :etypes, through: :etype_exercises
+	has_many :etypes, through: :etypes_exercises
 
 	has_many :exercises_muscles 
 	has_many :muscles, through: :exercises_muscles

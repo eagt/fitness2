@@ -40,12 +40,9 @@ ActiveRecord::Schema.define(version: 20170306164719) do
   end
 
   create_table "exercises", force: :cascade do |t|
-    t.string   "etype_id"
     t.string   "name"
-    t.string   "muscle_id"
-    t.string   "equipment_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "muscles", force: :cascade do |t|
