@@ -1,6 +1,4 @@
 class Equipment < ApplicationRecord
 	
-	has_many :equipment_exercises
-	has_many :exercises, through: :equipment_exercises
-	
+	has_and_belongs_to_many :exercises	
 end

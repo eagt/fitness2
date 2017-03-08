@@ -10,29 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308061031) do
+ActiveRecord::Schema.define(version: 20170308173714) do
 
-  create_table "equipment", force: :cascade do |t|
+  create_table "equipments", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "equipment_exercises", force: :cascade do |t|
-    t.integer  "equipment_id"
-    t.integer  "exercise_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["equipment_id", "exercise_id"], name: "index_equipment_exercises_on_equipment_id_and_exercise_id"
-  end
-
-  create_table "etype_exercises", force: :cascade do |t|
-    t.integer  "etype_id"
-    t.integer  "exercise_id"
-    t.string   "monto"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["etype_id", "exercise_id"], name: "index_etype_exercises_on_etype_id_and_exercise_id"
+  create_table "equipments_exercises", id: false, force: :cascade do |t|
+    t.integer "exercise_id"
+    t.integer "equipment_id"
+    t.index ["exercise_id", "equipment_id"], name: "index_equipments_exercises_on_exercise_id_and_equipment_id"
   end
 
   create_table "etypes", force: :cascade do |t|
@@ -41,12 +30,10 @@ ActiveRecord::Schema.define(version: 20170308061031) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "exercise_muscles", force: :cascade do |t|
-    t.integer  "muscle_id"
-    t.integer  "exercise_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["muscle_id", "exercise_id"], name: "index_exercise_muscles_on_muscle_id_and_exercise_id"
+  create_table "etypes_exercises", id: false, force: :cascade do |t|
+    t.integer "exercise_id"
+    t.integer "etypes_id"
+    t.index ["exercise_id", "etypes_id"], name: "index_etypes_exercises_on_exercise_id_and_etypes_id"
   end
 
   create_table "exercises", force: :cascade do |t|
@@ -54,6 +41,12 @@ ActiveRecord::Schema.define(version: 20170308061031) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "exercises_muscles", id: false, force: :cascade do |t|
+    t.integer "exercise_id"
+    t.integer "muscle_id"
+    t.index ["exercise_id", "muscle_id"], name: "index_exercises_muscles_on_exercise_id_and_muscle_id"
   end
 
   create_table "muscles", force: :cascade do |t|
