@@ -10,19 +10,24 @@ Exercise.destroy_all
 Etype.destroy_all
 Muscle.destroy_all
 Equipment.destroy_all
-Etype_Exercise.destroy_all
-Equipment_Exercise.destroy_all
-Exercise_Muscle.destroy_all
+#Etype_Exercise.destroy_all
+#Equipment_Exercise.destroy_all
+#Exercise_Muscle.destroy_all
 
 
+=begin
 Etype_Exercise.create!([{
-	id:1, etype_id: 1, exercise_id: 1}])
+	id:1, etype_id: 1, exercise_id: 1},
+	{id:2, etype_id: 2, exercise_id: 2}])
 
 Equipment_Exercise.create!([{
-	id:2, etype_id: 2, exercise_id: 2}])
+	id:1, equipment_id: 1, exercise_id: 1},
+	{id:2, equipment_id: 2, exercise_id: 2}])
 
 Exercise_Muscle.create!([{
-	id:3, etype_id: 3, exercise_id: 3}])
+	id:1, muscle_id: 1, exercise_id: 1},
+	{id:2, muscle_id: 2, exercise_id: 2}])
+=end 
 
 Etype.create!([{
 	id: 1, name: "Strength"},
@@ -41,9 +46,11 @@ Equipment.create!([{
 
 
 Exercise.create!([{
-id: 1, name: "Jopo Arriba"},
-{id: 2, name: "Sentadi"},
-{id: 3, name: "Back Arm triceps"}])
+id: 1, name: "Jopo Arriba", cosa: "esto"}])
+
+#{id: 2, name: "Sentadi" },
+#{id: 3, name: "Back Arm triceps"}])
 
 
 p "Created #{Exercise.count} exercises"
+

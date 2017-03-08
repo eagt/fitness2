@@ -1,4 +1,5 @@
-class Exercises_Muscles < ApplicationRecord
-	belongs_to :exercises
-	belongs_to :muscles
+class ExerciseMuscle < ApplicationRecord
+
+	belongs_to :exercise
+	belongs_to :muscle
 end

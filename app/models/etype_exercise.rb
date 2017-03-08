@@ -1,5 +1,5 @@
-class Etypes_Exercises < ApplicationRecord
-	
+class EtypeExercise < ApplicationRecord
+
 	belongs_to :etype
 	belongs_to :exercise
 	

@@ -10,27 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170306164719) do
-
-  create_table "Equipment_Exercises", id: false, force: :cascade do |t|
-    t.integer "equipment_id", null: false
-    t.integer "exercise_id",  null: false
-  end
-
-  create_table "Etypes_Exercises", id: false, force: :cascade do |t|
-    t.integer "etype_id",    null: false
-    t.integer "exercise_id", null: false
-  end
-
-  create_table "Exercises_Muscles", id: false, force: :cascade do |t|
-    t.integer "exercise_id", null: false
-    t.integer "muscle_id",   null: false
-  end
+ActiveRecord::Schema.define(version: 20170308061031) do
 
   create_table "equipment", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "equipment_exercises", force: :cascade do |t|
+    t.integer  "equipment_id"
+    t.integer  "exercise_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["equipment_id", "exercise_id"], name: "index_equipment_exercises_on_equipment_id_and_exercise_id"
+  end
+
+  create_table "etype_exercises", force: :cascade do |t|
+    t.integer  "etype_id"
+    t.integer  "exercise_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["etype_id", "exercise_id"], name: "index_etype_exercises_on_etype_id_and_exercise_id"
   end
 
   create_table "etypes", force: :cascade do |t|
@@ -39,7 +40,16 @@ ActiveRecord::Schema.define(version: 20170306164719) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "exercise_muscles", force: :cascade do |t|
+    t.integer  "muscle_id"
+    t.integer  "exercise_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["muscle_id", "exercise_id"], name: "index_exercise_muscles_on_muscle_id_and_exercise_id"
+  end
+
   create_table "exercises", force: :cascade do |t|
+    t.string   "cosa"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

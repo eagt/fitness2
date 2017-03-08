@@ -1,5 +1,5 @@
-class Equipment_Exercises < ApplicationRecord
-	
-	belongs_to :exercises
-	belongs_to :equipments
+class EquipmentExercise < ApplicationRecord
+
+	belongs_to :equipment
+	belongs_to :exercise
 end
