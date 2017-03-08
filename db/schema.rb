@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20170308061031) do
   create_table "etype_exercises", force: :cascade do |t|
     t.integer  "etype_id"
     t.integer  "exercise_id"
+    t.string   "monto"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["etype_id", "exercise_id"], name: "index_etype_exercises_on_etype_id_and_exercise_id"
