@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308214755) do
+ActiveRecord::Schema.define(version: 20170309050118) do
 
   create_table "equipment", force: :cascade do |t|
     t.string   "name"
@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 20170308214755) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "equipments_exercises", id: false, force: :cascade do |t|
+  create_table "equipment_exercises", id: false, force: :cascade do |t|
     t.integer "exercise_id"
     t.integer "equipment_id"
-    t.index ["exercise_id", "equipment_id"], name: "index_equipments_exercises_on_exercise_id_and_equipment_id"
+    t.index ["exercise_id", "equipment_id"], name: "index_equipment_exercises_on_exercise_id_and_equipment_id"
   end
 
   create_table "etypes", force: :cascade do |t|
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 20170308214755) do
 
   create_table "etypes_exercises", id: false, force: :cascade do |t|
     t.integer "exercise_id"
-    t.integer "etypes_id"
-    t.index ["exercise_id", "etypes_id"], name: "index_etypes_exercises_on_exercise_id_and_etypes_id"
+    t.integer "etype_id"
+    t.index ["exercise_id", "etype_id"], name: "index_etypes_exercises_on_exercise_id_and_etype_id"
   end
 
   create_table "exercises", force: :cascade do |t|
