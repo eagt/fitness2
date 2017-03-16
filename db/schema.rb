@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170309050118) do
+ActiveRecord::Schema.define(version: 20170316110933) do
 
   create_table "equipment", force: :cascade do |t|
     t.string   "name"
@@ -37,10 +37,10 @@ ActiveRecord::Schema.define(version: 20170309050118) do
   end
 
   create_table "exercises", force: :cascade do |t|
-    t.string   "cosa"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "exercises_muscles", id: false, force: :cascade do |t|
@@ -49,8 +49,27 @@ ActiveRecord::Schema.define(version: 20170309050118) do
     t.index ["exercise_id", "muscle_id"], name: "index_exercises_muscles_on_exercise_id_and_muscle_id"
   end
 
+  create_table "measurements", force: :cascade do |t|
+    t.string   "user_id"
+    t.string   "date"
+    t.string   "weight"
+    t.string   "weight_unit"
+    t.string   "fat_pct"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "muscles", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "surname"
+    t.string   "email"
+    t.string   "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
