@@ -1,31 +1,35 @@
 class ExercisesController < ApplicationController
-  before_action :set_exercise, only: [:show, :edit, :update, :destroy]
+  before_action :set_exercise, only: [:show, :update, :destroy] # :edit, deleted for a while
 
   # GET /exercises
   # GET /exercises.json
   def index
-    @exercises = Exercise.all
+    @user = User.find(params[:user_id])
   end
+
+
 
   # GET /exercises/1
   # GET /exercises/1.json
   def show
+    @user = User.find(params[:user_id])
+  end
+
+   def show
+     @user = User.find(params[:user_id]) 
   end
 
   # GET /exercises/new
   def new
+    @user = User.find(params[:user_id])
     @exercise = Exercise.new
-  end
-
-  # GET /exercises/1/edit
-  def edit
   end
 
   # POST /exercises
   # POST /exercises.json
   def create
+    @user = User.find(params[:user_id])
     @exercise = Exercise.new(exercise_params)
-
     respond_to do |format|
       if @exercise.save
         format.html { redirect_to @exercise, notice: 'Exercise was successfully created.' }
@@ -37,9 +41,16 @@ class ExercisesController < ApplicationController
     end
   end
 
+  # GET /exercises/1/edit
+  def edit
+    @user = User.find(params[:user_id])
+    @exercise = Exercise.find(params[:id])
+  end
+
   # PATCH/PUT /exercises/1
   # PATCH/PUT /exercises/1.json
   def update
+    @user = User.find(params[:user_id])
     respond_to do |format|
       if @exercise.update(exercise_params)
         format.html { redirect_to @exercise, notice: 'Exercise was successfully updated.' }

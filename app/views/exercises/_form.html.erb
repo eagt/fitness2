@@ -1,19 +1,8 @@
-<%= form_for(exercise) do |f| %>
-  <% if exercise.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(exercise.errors.count, "error") %> prohibited this exercise from being saved:</h2>
-
-      <ul>
-      <% exercise.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for [@user, @exercise] do |f| %> 
 
   <div class="field">
     <%= f.label :etype %>
-    <%= f.text_field :etype %>
+    <%= f.select(:etypes, @user.etypes.map {|s| [s.name, s.id]}) %>
   </div>
 
   <div class="field">
@@ -21,14 +10,15 @@
     <%= f.text_field :name %>
   </div>
 
+
   <div class="field">
     <%= f.label :muscle %>
-    <%= f.text_field :muscle %>
+    <%= f.select(:muscles, @user.muscles.map {|s| [s.name, s.id]})%>
   </div>
 
   <div class="field">
     <%= f.label :equipment %>
-    <%= f.text_field :equipment %>
+    <%= f.select(:equipment, @user.equipment.map {|s| [s.name, s.id]})%>
   </div>
 
   <div class="actions">

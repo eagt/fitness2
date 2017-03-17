@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316110933) do
+ActiveRecord::Schema.define(version: 20170317074148) do
 
   create_table "equipment", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_equipment_on_user_id"
   end
 
   create_table "equipment_exercises", id: false, force: :cascade do |t|
@@ -25,9 +27,11 @@ ActiveRecord::Schema.define(version: 20170316110933) do
   end
 
   create_table "etypes", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_etypes_on_user_id"
   end
 
   create_table "etypes_exercises", id: false, force: :cascade do |t|
@@ -37,10 +41,12 @@ ActiveRecord::Schema.define(version: 20170316110933) do
   end
 
   create_table "exercises", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "name"
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_exercises_on_user_id"
   end
 
   create_table "exercises_muscles", id: false, force: :cascade do |t|
@@ -50,7 +56,7 @@ ActiveRecord::Schema.define(version: 20170316110933) do
   end
 
   create_table "measurements", force: :cascade do |t|
-    t.string   "user_id"
+    t.integer  "user_id"
     t.string   "date"
     t.string   "weight"
     t.string   "weight_unit"
@@ -60,9 +66,22 @@ ActiveRecord::Schema.define(version: 20170316110933) do
   end
 
   create_table "muscles", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_muscles_on_user_id"
+  end
+
+  create_table "routines", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "date"
+    t.string   "weekly_frequency"
+    t.date     "day"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["user_id"], name: "index_routines_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -72,6 +91,18 @@ ActiveRecord::Schema.define(version: 20170316110933) do
     t.string   "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "workouts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.date     "date"
+    t.string   "lifted_weight"
+    t.string   "weight_unit"
+    t.string   "repetitions"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["user_id"], name: "index_workouts_on_user_id"
   end
 
 end

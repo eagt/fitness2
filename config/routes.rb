@@ -1,50 +1,50 @@
 Rails.application.routes.draw do
-  get 'muscle/index'
-
-  get 'muscle/show'
-
-  get 'muscle/new'
-
-  get 'muscle/create'
-
-  get 'muscle/edit'
-
-  get 'muscle/update'
-
-  get 'muscle/destroy'
-
-  get 'etype/index'
-
-  get 'etype/show'
-
-  get 'etype/new'
-
-  get 'etype/create'
-
-  get 'etype/edit'
-
-  get 'etype/update'
-
-  get 'etype/destroy'
-
-  get 'equipment/index'
-
-  get 'equipment/show'
-
-  get 'equipment/new'
-
-  get 'equipment/create'
-
-  get 'equipment/edit'
-
-  get 'equipment/update'
-
-  get 'equipment/destroy'
-
-  resources :measurements
-  resources :users
-  resources :exercises
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root :to => "exercises#index"
+  root :to => "users#index"
 
+      resources :users do
+      member do
+        get :delete
+      end
+      collection do
+        get :login
+      end
+      resources :exercises do
+        member do
+          get :delete
+        end
+      end 
+      resources :etypes do
+        member do
+          get :delete
+        end
+      end
+      resources :muscles do
+        member do
+          get :delete
+        end
+      end
+      resources :equipment do
+        member do
+          get :delete
+        end
+      end
+      resources :workouts do
+        member do
+          get :delete
+        end
+      end
+      resources :routines do
+        member do
+          get :delete
+        end
+      end
+      resources :measurements do
+        member do
+          get :delete
+        end
+      end
+
+    end
 end
