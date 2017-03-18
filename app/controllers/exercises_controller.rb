@@ -51,13 +51,17 @@ class ExercisesController < ApplicationController
   # PATCH/PUT /exercises/1.json
   def update
     @user = User.find(params[:user_id])
+    @exercise = Exercise.find(params[:id])
     respond_to do |format|
       if @exercise.update(exercise_params)
-        format.html { redirect_to @exercise, notice: 'Exercise was successfully updated.' }
+        @exercise.etypes.delete(@exercise.etypes.first) if not(@exercise.etypes.empty?)
+        @exercise.etypes << Etype.find(params[:exercise][:etypes])
+
+        format.html { redirect_to user_exercises_path(@user), notice: 'Exercise was successfully updated.' }
         format.json { render :show, status: :ok, location: @exercise }
       else
         format.html { render :edit }
-        format.json { render json: @exercise.errors, status: :unprocessable_entity }
+        format.json { render json: edit_user_exercise_path(@user, exercise), status: :unprocessable_entity }
       end
     end
   end

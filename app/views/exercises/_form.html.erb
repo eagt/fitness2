@@ -2,7 +2,7 @@
 
   <div class="field">
     <%= f.label :etype %>
-    <%= f.select(:etypes, @user.etypes.map {|s| [s.name, s.id]}) %>
+    <%= f.select(:etypes, @user.etypes.map {|s| [s.name, s.id]} ) %>
   </div>
 
   <div class="field">

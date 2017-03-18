@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20170317074148) do
 
   create_table "measurements", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "date"
+    t.date     "date"
     t.string   "weight"
     t.string   "weight_unit"
     t.string   "fat_pct"
