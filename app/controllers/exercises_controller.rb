@@ -51,9 +51,10 @@ class ExercisesController < ApplicationController
   # PATCH/PUT /exercises/1.json
   def update
     @user = User.find(params[:user_id])
+    @exercise = Exercise.find(params[:id])
     respond_to do |format|
       if @exercise.update(exercise_params)
-        format.html { redirect_to @exercise, notice: 'Exercise was successfully updated.' }
+        format.html { redirect_to user_exercises_path(@user), notice: 'Exercise was successfully updated.' }
         format.json { render :show, status: :ok, location: @exercise }
       else
         format.html { render :edit }
